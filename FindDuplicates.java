@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 public class FindDuplicates {
 
@@ -18,6 +20,19 @@ public class FindDuplicates {
         return unique;
     }
 
+    public static List<Integer> findDuplicatesSet(List<Integer> l) {
+		Set<Integer> unique = new HashSet<Integer>();
+		Set<Integer> set = new HashSet<Integer>();
+    	
+		for (int num: l) {
+			if (set.add(num) == false)
+				unique.add(num);
+		}
+    	
+    	return List.copyOf(unique);
+    	
+    }
+
     public static void main(String[] args) {
         // some test strings:
         List<Integer> sample1 = new ArrayList<Integer>(Arrays.asList(3, 7, 5, 6, 7, 4, 8, 5, 7, 66));
@@ -28,6 +43,12 @@ public class FindDuplicates {
         System.out.println("Sample 2: " + findDuplicatesNestedLoops(sample2));
         System.out.println("Sample 3: " + findDuplicatesNestedLoops(sample3));
         System.out.println("Sample 4: " + findDuplicatesNestedLoops(sample4));
+
+        System.out.println();
+        System.out.println("Sample 1: " + findDuplicatesSet(sample1));
+        System.out.println("Sample 2: " + findDuplicatesSet(sample2));
+        System.out.println("Sample 3: " + findDuplicatesSet(sample3));
+        System.out.println("Sample 4: " + findDuplicatesSet(sample4));
     }
 
 }
